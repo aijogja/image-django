@@ -1,0 +1,35 @@
+{% extends "index.html" %}
+
+{% block content %}
+	{% if data_query  %} 
+		<img src="{{ data_query.image.url }}" />
+
+		<div style="margin:20px 0px">
+		{% if data_comment  %} 
+			{% for komen in data_comment %}
+			<div class="media">			
+				<div class="media-body">
+				<h4 class="media-heading">{{ user }}</h4>
+					<p>{{ komen.comment }}</p>
+				</div>
+			</div>
+			{% endfor %}
+		{% endif %}	
+		</div>
+
+		{% if user.is_authenticated %}
+		<div>
+			<form action="" method="post" role="form">
+				{% csrf_token %}    
+				{% for field in form.visible_fields %}
+				<div class="form-group">
+				{{ field }}
+				</div>	
+				{% endfor %}    
+				<input type="submit" name="submit" class="btn btn-info btn-sm" value="Post" />
+			</form>
+
+		</div>
+		{% endif %}	
+	{% endif %}	
+{% endblock %}

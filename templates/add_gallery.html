@@ -1,0 +1,14 @@
+{% extends "index.html" %}
+
+{% block content %}
+<form action="" method="post" role="form" enctype="multipart/form-data">
+	{% csrf_token %}    
+	{% for field in form.visible_fields %}	
+	<div class="form-group">
+	{{ field }}   	
+	</div>
+	{% endfor %}  
+
+	<input type="submit" name="submit" class="btn btn-success btn-sm" value="Simpan" />
+</form>
+{% endblock %}

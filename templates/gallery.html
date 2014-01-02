@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+
+{% block content %}
+	{% if data_query  %} 
+		{% for dt in data_query  %}
+		<div style="margin-bottom:10px"><a href="detail/{{ dt.id }}"><img src="{{ dt.image_thumb.url }}" class="img-thumbnail" /></a></div>
+		{% endfor %}
+	{% else %}
+	kosong
+	{% endif %}	
+{% endblock %}
